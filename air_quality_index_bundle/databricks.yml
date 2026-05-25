@@ -30,7 +30,7 @@ targets:
     default: true
     workspace:
       host: https://dbc-67c4d502-2662.cloud.databricks.com
-      root_path: /Workspace/Users/sougatapandit99@gmail.com/DEV/${bundle.name}/${bundle.target}
+      root_path: /Workspace/Users/${workspace.current_user.userName}/DEV/${bundle.name}/${bundle.target}
     variables:
       catalog: ${var.catalog}
       schema: ${var.schema}
@@ -43,14 +43,14 @@ targets:
     workspace:
       host: https://dbc-67c4d502-2662.cloud.databricks.com
       # We explicitly deploy to /Workspace/Users/sougatapandit99@gmail.com to make sure we only have a single copy.
-      root_path: /Workspace/Users/sougatapandit99@gmail.com/PROD/${bundle.name}/${bundle.target}
+      root_path: /Workspace/Users/${workspace.current_user.userName}/PROD/${bundle.name}/${bundle.target}
     variables:
       catalog: ${var.catalog}
       schema: ${var.schema}
       env: ${var.env}
     presets:
       name_prefix: prod[${workspace.current_user.short_name}]
-      source_linked_deployment: true
+      source_linked_deployment: false
     permissions:
-      - user_name: sougatapandit99@gmail.com
+      - group_name: admins
         level: CAN_MANAGE
