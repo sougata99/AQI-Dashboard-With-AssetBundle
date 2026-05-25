@@ -1,0 +1,18 @@
+resources:
+  jobs:
+    AQI_DATA:
+      name: AQI DATA
+      schedule:
+        quartz_cron_expression: 27 0 12 * * ?
+        timezone_id: Asia/Calcutta
+        pause_status: UNPAUSED
+      tasks:
+        - task_key: AQI_DATA
+          notebook_task:
+            notebook_path: ../../src/notebooks/Data.ipynb
+            base_parameters:
+              env: ${var.env}
+            source: WORKSPACE
+      queue:
+        enabled: true
+      performance_target: PERFORMANCE_OPTIMIZED

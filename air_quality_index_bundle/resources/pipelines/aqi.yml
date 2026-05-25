@@ -1,0 +1,16 @@
+resources:
+  pipelines:
+    pipeline_air_quality_index_analysis:
+      name: ${var.env}_air_quality_index_analysis
+      configuration:
+        env: ${var.env}
+      libraries:
+        - notebook:
+            path: ../../src/notebooks/streaming_transformations.ipynb
+      schema: ${var.schema}
+      continuous: false
+      development: false
+      photon: true
+      channel: PREVIEW
+      catalog: ${var.catalog}
+      serverless: true

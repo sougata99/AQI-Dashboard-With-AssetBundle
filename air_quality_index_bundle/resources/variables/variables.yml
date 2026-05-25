@@ -1,0 +1,12 @@
+targets:
+  dev:
+    default: true
+    variables:
+      catalog: dev_catalog
+      schema: aqi_strm_dev
+      env: dev
+  prod:
+    variables:
+      catalog: prod_catalog
+      schema: aqi_strm_prod
+      env: prod
